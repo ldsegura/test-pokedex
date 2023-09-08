@@ -39,7 +39,7 @@ const HomePage = () => {
       setPositionScript(4);
     }
   }, [auth]);
-  console.log(auth);
+
   const onClickNext = () => {
     const finish = 6;
     if (positionScript + 1 <= finish) {

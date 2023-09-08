@@ -16,4 +16,15 @@ export default {
     complete: false,
     error: false,
   },
+  pokedex: {
+    loading: false,
+    complete: false,
+    error: false,
+  },
+  pokemons: {
+    data: [],
+    loading: false,
+    complete: false,
+    error: false,
+  }
 };

@@ -1,6 +1,7 @@
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
+    "website.title": "Pokédex",
     "website.next": "Siguiente",
     "website.skip": "Omitir",
     "website.finish": "Iniciar",

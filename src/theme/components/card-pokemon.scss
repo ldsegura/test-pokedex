@@ -1,0 +1,13 @@
+.card-pokemon {
+  max-width: 205px;
+  .content-img {
+    border-radius: 4px;
+    background-color: $pokemonColor;
+  }
+  .pokemon-number,
+  .pokemon-name {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+}

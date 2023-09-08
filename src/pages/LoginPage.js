@@ -52,7 +52,7 @@ const LoginPage = () => {
         request,
         dispatch,
         (response) => {
-          console.log(response);
+
           window.localStorage.setItem(
             localstorageConstants.AUTH,
             JSON.stringify(response)
