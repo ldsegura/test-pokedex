@@ -1,0 +1,130 @@
+.poked-card {
+  background-color: $pokeColor;
+  border-radius: 4px;
+  border: 1px solid;
+  z-index: 1;
+  padding: 15px;
+  min-width: 300px;
+  box-shadow: 1px 2px 4px black;
+  & > .poked-card-header {
+    display: flex;
+    border-bottom: 2px solid #000;
+    padding-bottom: 5px;
+    border-top: 0;
+    border-left: 0;
+    margin-bottom: 15px;
+    .d-data {
+      border-radius: 50%;
+      border: 2px solid;
+      //   background-color: #08cdef;
+      background-color: #08cdef;
+      background: radial-gradient(at top left, #08cdef 20%, #004434);
+      width: 40px;
+      height: 40px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 12px;
+    }
+    .d-circle {
+      display: flex;
+      gap: 2px;
+      padding-left: 10px;
+      div {
+        width: 10px;
+        height: 10px;
+        border: 1px solid black;
+        border-radius: 50%;
+        &.red {
+          background-color: red;
+        }
+        &.yellow {
+          background-color: yellow;
+        }
+        &.green {
+          background-color: green;
+        }
+      }
+    }
+  }
+  .poked-card-body {
+    border: 1px solid;
+    padding: 10px;
+    background-color: $terminalBaseColor;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 25px;
+
+    .poked-card-header {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      padding: 10px;
+      .circle {
+        width: 5px;
+        height: 5px;
+        background-color: black;
+        border-radius: 50%;
+      }
+    }
+    .poked-card-console {
+      background-color: $terminalColor;
+      border-radius: 5px;
+      color: $terminalTextColor;
+      height: 250px;
+      padding: 10px;
+      font-size: 10pt;
+      font-family: $fontConsole;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      .btn {
+        font-size: 9pt;
+        color: white;
+        padding-left: 6px;
+        padding-right: 6px;
+        &:active {
+          color: $pokeColor;
+        }
+      }
+      input {
+        background-color: transparent;
+        border: 0;
+        color: white;
+        &::placeholder {
+          color: white;
+        }
+      }
+    }
+    .poked-card-footer {
+      padding-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: row;
+      align-items: center;
+
+      .circle {
+        width: 25px;
+        height: 25px;
+        background-color: $pokeColor;
+        border-radius: 50%;
+        border: 2px solid;
+      }
+      .b-filter {
+        height: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        div {
+          min-width: 30px;
+          height: 3px;
+          background-color: black;
+        }
+      }
+    }
+  }
+}
