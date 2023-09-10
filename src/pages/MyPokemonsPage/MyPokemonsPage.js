@@ -1,34 +1,43 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useGlobalState } from "../../store/StoreProvider";
-import ListPokemonSection from "../../components/section/ListPokemonSection";
 import { useIntl } from "react-intl";
 import pokedexAction from "../../actions/pokedexAction";
 import pokemonAction from "../../actions/pokemonAction";
 import listPokemonAction from "../../actions/listPokemonAction";
 import SearchPokemonSection from "../../components/section/SearchPokemonSection";
 import listPokemonBySearchAction from "../../actions/listPokemonBySearchAction";
+import ListMyPokemonSection from "../../components/section/ListMyPokemonSection";
 
-const SearchPage = () => {
-  const { pokedex, pokemons, pokemonsBySearch } = useGlobalState();
+const MyPokemonsPage = () => {
+  const { auth, pokedex, pokemons, pokemonsBySearch } = useGlobalState();
   const dispatch = useDispatch();
   const intl = useIntl();
   const [showPokemons, setShowPokemons] = useState(12);
-
   useEffect(() => {
-    pokedexAction.get({}, dispatch);
-    // listPokemonAction.update({complete: false, data: [] }, dispatch);
-    // pokedexAction.update({complete: false, results: []}, dispatch)
-    return () => {
-      console.log("sali de la pagina busqueda")
-      listPokemonAction.update({complete: false, data: [] }, dispatch);
-      listPokemonBySearchAction.update({complete: false, data: [] }, dispatch);
-      pokedexAction.update({complete: false, results: []}, dispatch)
-      
+    listPokemonAction.update({complete: false, data: [] }, dispatch);
+    listPokemonBySearchAction.update({complete: false, data: [] }, dispatch);
+    pokedexAction.update({complete: false, results: []}, dispatch);
+  },[])
+  useEffect(() => {
+    //TODO modifica el pokedex con los pokemones de la sesion
+    if (auth.complete) {
+      console.log("debio modificar la chingadera")
+      pokedexAction.loaded({}, dispatch);
+      const auxData = auth.pokemons.map((item) => {
+        return {
+          ...item,
+          name: item.id,
+        };
+      });
+      console.log(auxData.length)
+      setShowPokemons(auxData.length);
+      pokedexAction.update({ results: auxData }, dispatch);
     }
-  }, []);
+  }, [auth]);
 
   useEffect(() => {
     if (pokedex.complete) {
+      console.log(pokedex, "esta entrando y modificando por primera vez")
       morePokemons();
     }
   }, [pokedex]);
@@ -58,19 +67,18 @@ const SearchPage = () => {
   const onMorePokemons = () => {
     //TODO aumenta la lista de pokemones por 12
     if (pokedex.complete) {
-      if (showPokemons + 12 <= pokedex.results.length){
+      if (showPokemons + 12 <= pokedex.results.length) {
         const next = showPokemons + 12;
         setShowPokemons(next);
         morePokemons(next);
-      }
-      else {
+      } else {
         const next = pokedex.results.length;
         setShowPokemons(next);
         morePokemons(next);
       }
     }
   };
-  
+
   const onSelectAutocomplete = (value) => {
     console.log(value);
     listPokemonBySearchAction.loaded({}, dispatch);
@@ -78,33 +86,45 @@ const SearchPage = () => {
       const items = { data: [response] };
       listPokemonBySearchAction.update(items, dispatch);
     });
-  }
+  };
 
   const onChangeAutocomplete = () => {
     const items = { data: [] };
-      listPokemonBySearchAction.update(items, dispatch);
-  }
+    listPokemonBySearchAction.update(items, dispatch);
+  };
 
   return (
     <div className="container mb-4 bg-white rounded-3">
       <div>
         <h1 className="text-uppercase pt-4 text-center">
-          {intl.formatMessage({ id: "website.title" })}
+          {intl.formatMessage({ id: "website.myPokemonstitle" })}
         </h1>
       </div>
       {pokedex.complete && (
-        <SearchPokemonSection items={pokedex.results} onSelect={onSelectAutocomplete} onChange={onChangeAutocomplete} />
+        <SearchPokemonSection
+          items={pokedex.results}
+          onSelect={onSelectAutocomplete}
+          onChange={onChangeAutocomplete}
+        />
       )}
       <div>
-        <ListPokemonSection
-          pokemons={pokemonsBySearch.data.length === 0 ? pokemons.data : pokemonsBySearch.data}
-          loading={pokedex.loading || pokemons.loading || pokemonsBySearch.loading}
+        <ListMyPokemonSection
+          pokemons={
+            pokemonsBySearch.data.length === 0
+              ? pokemons.data
+              : pokemonsBySearch.data
+          }
+          loading={
+            pokedex.loading || pokemons.loading || pokemonsBySearch.loading
+          }
           onMorePokemons={onMorePokemons}
-          hasButton={pokemonsBySearch.data.length !== 0 ? false : pokedex.complete}
+          hasButton={
+            pokemonsBySearch.data.length !== 0 ? false : pokedex.complete
+          }
         />
       </div>
     </div>
   );
 };
 
-export default SearchPage;
+export default MyPokemonsPage;

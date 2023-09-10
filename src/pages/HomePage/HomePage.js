@@ -20,7 +20,7 @@ const HomePage = () => {
   const navigate = useNavigate();
   const [positionScript, setPositionScript] = useState(0);
   const [errorMessage, setErrorMessage] = useState("");
-  const [pokemonId, setPokemonId] = useState(0);
+  const [pokemonId, setPokemonId] = useState("");
   const [formData, setFormData] = useReducer(
     (formData, newItem) => {
       return { ...formData, ...newItem };
@@ -30,12 +30,12 @@ const HomePage = () => {
 
   useEffect(() => {
     //al iniciar si tiene nombre lo pasa al siguiente paso
-    if (!_.isEmpty(auth.name) && auth.pokemons && auth.pokemons.length > 0) {
+    if (!_.isEmpty(auth.name) && auth.pokemons && auth.pokemons.length > 0 && positionScript === 0) {
       const location = {
         pathname: `${languageUtils.linksLocale(locale)}${pagesContants.dashboard}`,
       };
       navigate(location);
-    } else if (!_.isEmpty(auth.name)) {
+    } else if (!_.isEmpty(auth.name) && positionScript === 0) {
       setPositionScript(4);
     }
   }, [auth]);
@@ -118,22 +118,22 @@ const HomePage = () => {
               <ButtonGroup aria-label="Basic example" style={{ width: "100%" }}>
                 <Button
                   variant="secondary"
-                  active={pokemonId === 7}
-                  onClick={() => onSelectPokemon(7)}
+                  active={pokemonId === "squirtle"}
+                  onClick={() => onSelectPokemon("squirtle")}
                 >
                   Squirtle
                 </Button>
                 <Button
                   variant="secondary"
-                  active={pokemonId === 4}
-                  onClick={() => onSelectPokemon(4)}
+                  active={pokemonId === "charmander"}
+                  onClick={() => onSelectPokemon("charmander")}
                 >
                   charmander
                 </Button>
                 <Button
                   variant="secondary"
-                  active={pokemonId === 1}
-                  onClick={() => onSelectPokemon(1)}
+                  active={pokemonId === "bulbasaur"}
+                  onClick={() => onSelectPokemon("bulbasaur")}
                 >
                   bulbasaur
                 </Button>
@@ -258,7 +258,7 @@ const HomePage = () => {
     onClickNext();
   };
   const onSubmitbySelectPokemon = () => {
-    if (pokemonId === 0) {
+    if (pokemonId === "") {
       setErrorMessage(intl.formatMessage({ id: "website.errorPokemon" }));
     } else {
       const session = { ...auth };

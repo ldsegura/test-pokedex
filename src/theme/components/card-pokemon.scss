@@ -11,3 +11,16 @@
     white-space: nowrap;
   }
 }
+
+@media (max-width: $smmobile) {
+  .card-pokemon {
+    max-width: initial;
+    width: 100%;
+    .content-img {
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+}

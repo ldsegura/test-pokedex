@@ -3,13 +3,17 @@ import Badge from "react-bootstrap/Badge";
 import Stack from "react-bootstrap/Stack";
 import { useIntl } from "react-intl";
 import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import languageUtils from "../utils/languageUtils";
+import { useGlobalState } from "../store/StoreProvider";
 
-const CardPokemon = (props) => {
+const CardPokemonLink = (props) => {
   const { pokemon, caughtUp } = props;
+  const {locale} = useGlobalState();
   const intl = useIntl();
 
   return (
-    <div className="card-pokemon mb-3">
+    <Button className="card-pokemon mb-3 bg-transparent" as={Link} to={`${languageUtils.linksLocale(locale)}pokemon/${pokemon.name}`}>
       <div className="content-img">
         <LazyLoadImage
           alt={pokemon.name}
@@ -29,8 +33,8 @@ const CardPokemon = (props) => {
         })}
       </Stack>
       )}
-    </div>
+    </Button>
   );
 };
 
-export default CardPokemon;
+export default CardPokemonLink;

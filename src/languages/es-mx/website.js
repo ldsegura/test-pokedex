@@ -2,6 +2,9 @@
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
     "website.title": "Pokédex",
+    "website.pokemonTitle": "Pokémon",
+    "website.undefined": "Indefinido",
+    "website.myPokemonstitle": "Pokédex - mis pokemones",
     "website.next": "Siguiente",
     "website.skip": "Omitir",
     "website.finish": "Iniciar",
@@ -18,4 +21,7 @@ export default {
     "website.error-page": "Ups! Ocurrio un error",
     "website.loading-page": "Cargando página...",
     "website.notfound-page": "La página que estás buscando no está disponible. Intente buscar de nuevo o use",
+    "website.addPokemon": "Agregar pókemon a mi set",
+    "website.removePokemon": "Liberar un pókemon de mi set",
+    "website.pokemonUndefined": "Changos! Ese pokemon te lo debo joven...",
 }

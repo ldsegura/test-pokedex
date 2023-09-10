@@ -50,20 +50,60 @@ html {
   display: flex;
   flex-grow: 1;
   background-color: $primary;
-//   background-image: url("../assets/pxfuel.jpg");
-//   background-repeat: no-repeat;
-//   background-size: 40%;
-//   background-position-x:right; 
+  //   background-image: url("../assets/pxfuel.jpg");
+  //   background-repeat: no-repeat;
+  //   background-size: 40%;
+  //   background-position-x:right;
 }
 
-.stack-list-pokemons {
+.stack-list-pokemons,
+.search-pokemon-form {
   flex-wrap: wrap;
   max-width: 869px;
   margin: auto;
   flex-wrap: wrap;
 }
 
+.search-pokemon-form {
+  .autocomplete-wrapper {
+    > div {
+      width: 100%;
+      > div {
+        z-index: 1;
+      }
+    }
+    .item {
+      cursor: pointer;
+      font-size: 14px;
+      padding: 15px;
+    }
+    input {
+      width: 100%;
+      padding: 15px;
+      border-radius: 15px;
+      &:active,
+      &:focus {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        border-color: #0f67ff;
+        box-shadow: none;
+        outline: none;
+      }
+    }
+  }
+}
+
+
+@media (min-width: $smmobile) and (max-width: $md) {
+  .stack-list-pokemons {
+    max-width: initial;
+    justify-content: space-evenly;
+  }
+}
+
+
 @import "./components/card-pokemon.scss";
+@import "./components/search-pokemon.scss";
 //TODO Last sections
 @import "./layout/footers.scss";
 @import "./components/poked-card.scss";

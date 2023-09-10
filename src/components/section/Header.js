@@ -164,15 +164,6 @@ const Header = () => {
                   >
                     {intl.formatMessage({ id: "websiteTextLink.myPokemons" })}
                   </Nav.Link>
-                  <Nav.Link
-                    active={hasActiveLink === 3}
-                    as={Link}
-                    to={`${languageUtils.linksLocale(locale)}${
-                      pagesContants.settings
-                    }`}
-                  >
-                    {intl.formatMessage({ id: "websiteTextLink.settings" })}
-                  </Nav.Link>
                   {isMobile && (
                     <>
                       <hr />

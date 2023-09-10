@@ -15,13 +15,21 @@ export default {
     loading: false,
     complete: false,
     error: false,
+    pokemons: []
   },
   pokedex: {
     loading: false,
     complete: false,
     error: false,
+    results: []
   },
   pokemons: {
+    data: [],
+    loading: false,
+    complete: false,
+    error: false,
+  },
+  pokemonsBySearch: {
     data: [],
     loading: false,
     complete: false,

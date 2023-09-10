@@ -42,8 +42,21 @@ const get = async (_request, dispatch, onSuccess, onError) => {
   }
 };
 
+const update = async (pokedex, dispatch) => {
+  dispatch(getDispatch(pokedex));
+};
+const loaded = (_pokemonsBySearch, dispatch) => {
+  try {
+    dispatch(loading());
+  } catch (e) {
+    dispatch(errorDispath());
+  }
+};
+
 const pokedexAction = {
   get,
+  loaded,
+  update
 };
 
 export default pokedexAction;

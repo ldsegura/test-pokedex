@@ -17,6 +17,8 @@ import AccountPage from "./pages/AccountPage";
 //import SettingsPage from "./pages/SettingsPage/SettingsPage";
 import AuthLayout from "./pages/layouts/AuthLayout";
 import SearchPage from "./pages/SearchPage/SearchPage";
+import MyPokemonsPage from "./pages/MyPokemonsPage/MyPokemonsPage";
+import PokemonPage from "./pages/PokemonPage";
 
 function App() {
   useAuthVerification();
@@ -39,9 +41,9 @@ function App() {
           {/* //TODO paginas en esp */}
           <Route path={"/"} element={<Layout component={HomePage} />} />
           <Route path={`/${pagesContants.dashboard}`} element={<AuthLayout component={LoginPage} />} />
-          <Route path={`/pokemon/:id`} element={<LayoutComponent component={LoginPage} />} />
+          <Route path={`/pokemon/:id`} element={<AuthLayout component={PokemonPage} />} />
           <Route path={`/${pagesContants.search}`} element={<AuthLayout component={SearchPage} />} />
-          <Route path={`/${pagesContants.myPokemons}`} element={<LayoutComponent component={LoginPage} />} />
+          <Route path={`/${pagesContants.myPokemons}`} element={<AuthLayout component={MyPokemonsPage} />} />
           <Route path={`/${pagesContants.settings}`} element={<LayoutComponent component={LoginPage} />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
