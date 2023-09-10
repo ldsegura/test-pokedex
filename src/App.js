@@ -13,12 +13,11 @@ import pagesContants from "./constants/pagesContants";
 import LoginPage from "./pages/LoginPage";
 import useAuthVerification from "./hooks/useAuthVerification";
 import { Layout, LayoutComponent } from "./pages/layouts";
-import AccountPage from "./pages/AccountPage";
-//import SettingsPage from "./pages/SettingsPage/SettingsPage";
 import AuthLayout from "./pages/layouts/AuthLayout";
 import SearchPage from "./pages/SearchPage/SearchPage";
 import MyPokemonsPage from "./pages/MyPokemonsPage/MyPokemonsPage";
 import PokemonPage from "./pages/PokemonPage";
+import DashboardPage from "./pages/DashboardPage";
 
 function App() {
   useAuthVerification();
@@ -40,7 +39,7 @@ function App() {
         <Routes>
           {/* //TODO paginas en esp */}
           <Route path={"/"} element={<Layout component={HomePage} />} />
-          <Route path={`/${pagesContants.dashboard}`} element={<AuthLayout component={LoginPage} />} />
+          <Route path={`/${pagesContants.dashboard}`} element={<AuthLayout component={DashboardPage} />} />
           <Route path={`/pokemon/:id`} element={<AuthLayout component={PokemonPage} />} />
           <Route path={`/${pagesContants.search}`} element={<AuthLayout component={SearchPage} />} />
           <Route path={`/${pagesContants.myPokemons}`} element={<AuthLayout component={MyPokemonsPage} />} />

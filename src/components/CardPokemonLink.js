@@ -6,6 +6,7 @@ import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import languageUtils from "../utils/languageUtils";
 import { useGlobalState } from "../store/StoreProvider";
+import AddPokemon from "./ui/AddPokemon";
 
 const CardPokemonLink = (props) => {
   const { pokemon, caughtUp } = props;
@@ -13,17 +14,17 @@ const CardPokemonLink = (props) => {
   const intl = useIntl();
 
   return (
-    <Button className="card-pokemon mb-3 bg-transparent" as={Link} to={`${languageUtils.linksLocale(locale)}pokemon/${pokemon.name}`}>
-      <div className="content-img">
+    <div className="card-pokemon mb-3 bg-transparent border border-primary p-2 rounded-3">
+      <Button className="content-img p-0 border-0 w-100" as={Link} to={`${languageUtils.linksLocale(locale)}pokemon/${pokemon.name}`}>
         <LazyLoadImage
           alt={pokemon.name}
           src={pokemon.sprites.front_default}
           height={205}
           width={205}
         />
-      </div>
+      </Button>
       <p className="mb-0 pokemon-number">{`N. ${String(pokemon.id).padStart(4,"0")}${caughtUp ? `, Capturados: ${caughtUp}`: ''}`}</p>
-      <h5 className="pokemon-name text-uppercase">{pokemon.name}</h5>
+      <Button variant="link" className="pokemon-name text-black text-uppercase bg-transparent border-0 fw-bold fs-5 pb-2 pt-0" as={Link} to={`${languageUtils.linksLocale(locale)}pokemon/${pokemon.name}`}>{pokemon.name}</Button>
       {pokemon.types && (
       <Stack direction="horizontal" gap={2} className="stack-list-pokemons">
         {pokemon.types.map((item,i) => {
@@ -33,7 +34,8 @@ const CardPokemonLink = (props) => {
         })}
       </Stack>
       )}
-    </Button>
+      <AddPokemon pokemon={pokemon} />
+    </div>
   );
 };
 

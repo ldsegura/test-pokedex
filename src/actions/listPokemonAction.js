@@ -44,10 +44,18 @@ const loaded = (pokemons, dispatch) => {
     dispatch(errorDispath());
   }
 };
+const initial = (dispatch) => {
+  try {
+    dispatch(loading());
+  } catch (e) {
+    dispatch(errorDispath());
+  }
+};
 
 const listPokemonAction = {
   update,
-  loaded
+  loaded,
+  initial
 };
 
 export default listPokemonAction;

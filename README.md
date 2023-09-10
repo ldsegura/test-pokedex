@@ -1,70 +1,68 @@
-# Getting Started with Create React App
+# Pokedex
+## sitio de prueba de listado pokemon
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Sitio web responsivo con tematica pokemon utilizando React.js, boostrap 5 y react-router-dom 6
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- Inicia con un pokedex que te da la bienvenida y deja cargar tu nombre y un pokemon inicial
+- si eliminas todos los pokemones de tu deck, al seleccionar a inicio (dashboard) te manda a seleccionar tu primer pokemon desde el pokedex
+- Un dashboard donde te muestra los tipos de pokemones que tienes en tu deck, y el total de pokemones capturados
+- Página de busqueda pokemon, donde puedes agregar o eliminarlos de tu deck
+- Página de mis pokemones, donde muestra la lista de los pokemones capturados, dejando agregar o eliminarlos
+- Pagina de visualización pokemon, puedes agregar o eliminar uno por uno
 
-### `npm start`
+> La sesion se mantiene con localstorage, pero no tiene un logout por lo que para eliminar la sesion es quitar el local llamado "_auth_pokedex" donde almacena el nombre del entrenador, y los pokemones que tiene capturado, solo guarda el id/nombre que se usa como identificador y caughtUp que es el total de pokemon del mismo tipo
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Tech
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Dependencias mas destacadas:
 
-### `npm test`
+- [React] - react 18.2
+- [Bootstrap] - react-bootstrap
+- [intl] - react-intl - para el lenguaje
+- [LazyImage] - react-lazy-load-image-component carga de imagen con retraso hasta que sea visible
+- [react-responsive] - react-responsive - para validar la dimension de la pantalla desde JS
+- [recharts] - graficas
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Repositorio [public repository][dill] on GitHub.
 
-### `npm run build`
+## Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Requieres [Node.js](https://nodejs.org/) v18+ to run.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Instalar las dependencias
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```sh
+npm install 
+```
+ó
+```sh
+yarn install
+```
 
-### `npm run eject`
+Para variables de entorno solo usa dos parametros
+```sh
+REACT_APP_SITENAME=Website-name
+```
+y
+```sh
+REACT_APP_API=URL-API
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Ejecución
+En la carpeta del proyecto, ejecuta:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```sh
+npm run start ó yarn start
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## License
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+MIT
 
-## Learn More
+**Free Software, Hell Yeah!**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+[//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+   [dill]: <https://github.com/ldsegura/test-pokedex>

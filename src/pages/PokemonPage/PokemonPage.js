@@ -75,6 +75,16 @@ const PokemonPage = () => {
       updateSession(session);
     }
   };
+  const onRemoveAllPokemon = () => {
+    const index = auth.pokemons.findIndex((item) => item.id === pokemon?.name);
+    if (index >= 0) {
+      const aux = [...auth.pokemons];
+      const auxPokemons = aux.filter(item => item.id !== pokemon?.name);
+      const session = { ...auth };
+      session.pokemons = auxPokemons;
+      updateSession(session);
+    }
+  };
 
   const updateSession = (request) => {
     window.localStorage.setItem(
@@ -83,7 +93,6 @@ const PokemonPage = () => {
     );
     authAction.loaded(request, dispatch);
   };
-  console.log(auth)
   const indexAuthPokemon = auth?.pokemons?.findIndex(
     (item) => item.id === pokemon?.name
   );
@@ -114,6 +123,11 @@ const PokemonPage = () => {
                 {indexAuthPokemon >= 0 && (
                   <Button onClick={onRemovePokemon} className={`text-white ${isMobile ? "w-100": ''}`}>
                     {intl.formatMessage({ id: "website.removePokemon" })}
+                  </Button>
+                )}
+                {indexAuthPokemon >= 0 && (
+                  <Button onClick={onRemoveAllPokemon} className={`text-white ${isMobile ? "w-100": ''}`}>
+                    {intl.formatMessage({ id: "website.removeAllPokemon" })}
                   </Button>
                 )}
               </Stack>

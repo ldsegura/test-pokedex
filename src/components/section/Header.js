@@ -146,8 +146,7 @@ const Header = () => {
                 <Nav>
                   <Nav.Link
                     active={hasActiveLink === 1}
-                    as={Link}
-                    to={`${languageUtils.linksLocale(locale)}${
+                    href={`${languageUtils.linksLocale(locale)}${
                       pagesContants.search
                     }`}
                   >
@@ -157,8 +156,7 @@ const Header = () => {
                 <Nav>
                   <Nav.Link
                     active={hasActiveLink === 2}
-                    as={Link}
-                    to={`${languageUtils.linksLocale(locale)}${
+                    href={`${languageUtils.linksLocale(locale)}${
                       pagesContants.myPokemons
                     }`}
                   >

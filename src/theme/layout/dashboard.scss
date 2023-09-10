@@ -1,0 +1,22 @@
+.dashboard-page {
+    .body-dashboard {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 15px;
+        margin-bottom: 15px;
+    }
+}
+
+
+@media (min-width: $smmobile) and (max-width: $md) {
+    .dashboard-page {
+      .body-dashboard {
+        .card {
+
+            width: 100%;
+        }
+      }
+    }
+  }

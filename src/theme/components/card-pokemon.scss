@@ -10,6 +10,35 @@
     overflow: hidden;
     white-space: nowrap;
   }
+  .pokemon-set {
+    //display: none;
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    .form-body{
+      display: flex;
+      border: 1px solid tan;
+      gap: 3px;
+      padding: 5px;
+      border-radius: 4px;
+      input {
+        display: flex;
+        border: 0;
+        flex-grow: 1;
+        width: auto;
+        min-width: 20px;
+        text-align: center;
+        &:focus{
+          outline: none;
+      }
+      }
+    }
+  }
+  &:hover {
+    .pokemon-set {
+      display: flex;
+    }
+  }
 }
 
 @media (max-width: $smmobile) {

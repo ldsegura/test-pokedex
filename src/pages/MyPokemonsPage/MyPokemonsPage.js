@@ -13,15 +13,10 @@ const MyPokemonsPage = () => {
   const dispatch = useDispatch();
   const intl = useIntl();
   const [showPokemons, setShowPokemons] = useState(12);
-  useEffect(() => {
-    listPokemonAction.update({complete: false, data: [] }, dispatch);
-    listPokemonBySearchAction.update({complete: false, data: [] }, dispatch);
-    pokedexAction.update({complete: false, results: []}, dispatch);
-  },[])
+
   useEffect(() => {
     //TODO modifica el pokedex con los pokemones de la sesion
     if (auth.complete) {
-      console.log("debio modificar la chingadera")
       pokedexAction.loaded({}, dispatch);
       const auxData = auth.pokemons.map((item) => {
         return {
@@ -29,15 +24,19 @@ const MyPokemonsPage = () => {
           name: item.id,
         };
       });
-      console.log(auxData.length)
       setShowPokemons(auxData.length);
       pokedexAction.update({ results: auxData }, dispatch);
+      
+      //TODO se activa cuando se elimina un pokemon de la lista
+      if(auth.pokemons.length >= 0 && pokemons.data.length >= 0 && auth.pokemons.length < pokemons.data.length) {
+        const auxPokemons = pokemons.data.filter(item => auth.pokemons.findIndex(j => j.id === item.name) >= 0)
+        listPokemonAction.update(auxPokemons, dispatch);
+      }
     }
   }, [auth]);
 
   useEffect(() => {
     if (pokedex.complete) {
-      console.log(pokedex, "esta entrando y modificando por primera vez")
       morePokemons();
     }
   }, [pokedex]);
@@ -80,7 +79,6 @@ const MyPokemonsPage = () => {
   };
 
   const onSelectAutocomplete = (value) => {
-    console.log(value);
     listPokemonBySearchAction.loaded({}, dispatch);
     pokemonAction.get({ id: value }, (response) => {
       const items = { data: [response] };
@@ -119,7 +117,7 @@ const MyPokemonsPage = () => {
           }
           onMorePokemons={onMorePokemons}
           hasButton={
-            pokemonsBySearch.data.length !== 0 ? false : pokedex.complete
+            pokemonsBySearch.data.length !== 0 ? false : pokemons.data.length === pokedex.results.length ? false : pokedex.complete
           }
         />
       </div>

@@ -16,15 +16,6 @@ const SearchPage = () => {
 
   useEffect(() => {
     pokedexAction.get({}, dispatch);
-    // listPokemonAction.update({complete: false, data: [] }, dispatch);
-    // pokedexAction.update({complete: false, results: []}, dispatch)
-    return () => {
-      console.log("sali de la pagina busqueda")
-      listPokemonAction.update({complete: false, data: [] }, dispatch);
-      listPokemonBySearchAction.update({complete: false, data: [] }, dispatch);
-      pokedexAction.update({complete: false, results: []}, dispatch)
-      
-    }
   }, []);
 
   useEffect(() => {
@@ -72,7 +63,6 @@ const SearchPage = () => {
   };
   
   const onSelectAutocomplete = (value) => {
-    console.log(value);
     listPokemonBySearchAction.loaded({}, dispatch);
     pokemonAction.get({ id: value }, (response) => {
       const items = { data: [response] };
