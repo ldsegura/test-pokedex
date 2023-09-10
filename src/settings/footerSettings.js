@@ -1,10 +1,8 @@
-//import logo from "../assets/logo.PNG"
 import pagesContants from "../constants/pagesContants";
 
 const es = {
   id: 1,
   alt: "Pokedex",
-  logo: require("../assets/logo.PNG"),
   socialNetwork: [
     {
       id: 39,
@@ -120,7 +118,6 @@ const es = {
 const en = {
   id: 1,
   alt: "Pokedex",
-  logo: require("../assets/logo.PNG"),
   socialNetwork: [
     {
       id: 39,
